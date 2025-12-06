@@ -1,0 +1,1456 @@
+@import url("https://fonts.googleapis.com/css2?family=Teko:wght@400;600;700&family=Rajdhani:wght@400;600;700&display=swap");
+
+.container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #0a0e1a 0%, #1a1f2e 50%, #0f1419 100%);
+  color: #fff;
+  position: relative;
+  overflow-x: hidden;
+  padding-top: 70px;
+}
+
+/* Top Bar */
+.topBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  background: rgba(10, 14, 26, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  z-index: 100;
+}
+
+.logo {
+  font-family: "Teko", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #38bdf8;
+  text-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
+}
+
+.walletSection {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.walletSection button {
+  min-width: 120px;
+  font-family: "Rajdhani", sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.05em !important;
+}
+
+.disconnectBtn {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 0.625rem 1.25rem;
+  background: rgba(239, 68, 68, 0.1);
+  border: 2px solid rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+}
+
+.disconnectBtn:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: #ef4444;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.adminBtn {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 0.625rem 1.25rem;
+  background: rgba(168, 85, 247, 0.1);
+  border: 2px solid rgba(168, 85, 247, 0.3);
+  color: #a855f7;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+}
+
+.adminBtn:hover {
+  background: rgba(168, 85, 247, 0.2);
+  border-color: #a855f7;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
+}
+
+.cardStatus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.statusLabel {
+  font-family: "Teko", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+/* Hero Section with Stadium Lights */
+.heroSection {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 3rem 1.5rem;
+  background: radial-gradient(
+      ellipse at top,
+      rgba(56, 189, 248, 0.15) 0%,
+      transparent 60%
+    ),
+    linear-gradient(180deg, transparent 0%, #0a0e1a 100%);
+}
+
+.heroContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.heroLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.heroRight {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stadiumLights {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  display: flex;
+  justify-content: space-around;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.light {
+  width: 120px;
+  height: 250px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(56, 189, 248, 0.4) 20%,
+    rgba(56, 189, 248, 0.1) 50%,
+    transparent 100%
+  );
+  filter: blur(20px);
+  animation: floodlight 3s ease-in-out infinite;
+  opacity: 0.6;
+}
+
+.light:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.light:nth-child(3) {
+  animation-delay: 1s;
+}
+
+.light:nth-child(4) {
+  animation-delay: 1.5s;
+}
+
+@keyframes floodlight {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scaleY(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scaleY(1.1);
+  }
+}
+
+/* Title with Sharp Angles */
+.title {
+  font-family: "Teko", sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  line-height: 0.85;
+  text-align: left;
+  margin: 0;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.titleLine1,
+.titleLine2,
+.titleLine3 {
+  display: block;
+  background: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 50%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 40px rgba(56, 189, 248, 0.5);
+  animation: titleGlow 2s ease-in-out infinite alternate;
+  position: relative;
+}
+
+.titleLine1 {
+  animation-delay: 0s;
+}
+
+.titleLine2 {
+  animation-delay: 0.3s;
+}
+
+@keyframes titleGlow {
+  0% {
+    filter: brightness(1) drop-shadow(0 0 20px rgba(56, 189, 248, 0.5));
+  }
+  100% {
+    filter: brightness(1.2) drop-shadow(0 0 40px rgba(56, 189, 248, 0.8));
+  }
+}
+
+/* Hero Description */
+.heroDescription {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: #cbd5e1;
+  margin: 0;
+  max-width: 500px;
+}
+
+/* Hero Features */
+.heroFeatures {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(56, 189, 248, 0.05);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.feature:hover {
+  background: rgba(56, 189, 248, 0.1);
+  border-color: rgba(56, 189, 248, 0.4);
+  transform: translateX(8px);
+}
+
+.featureIcon {
+  font-size: 2rem;
+  filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.5));
+}
+
+.featureText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.featureTitle {
+  font-family: "Teko", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #fff;
+}
+
+.featureDesc {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+/* Hero Actions */
+.heroActions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.userPoints {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.15em;
+  color: #64748b;
+}
+
+.pointsValue {
+  font-family: "Teko", sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #38bdf8;
+  text-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
+  line-height: 1;
+}
+
+.mintBtn {
+  font-family: "Teko", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 1rem 2.5rem;
+  background: linear-gradient(135deg, #06b6d4 0%, #0ea5e9 100%);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  clip-path: polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%);
+}
+
+.mintBtn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.mintBtn:hover::before {
+  left: 100%;
+}
+
+.mintBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(6, 182, 212, 0.4);
+}
+
+.mintBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Neon Graphic */
+.neonGraphic {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 1;
+}
+
+.neonCard {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(2deg);
+  }
+}
+
+.neonCardInner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    rgba(6, 182, 212, 0.1) 0%,
+    rgba(14, 165, 233, 0.1) 100%
+  );
+  border: 3px solid #38bdf8;
+  border-radius: 20px;
+  box-shadow: 0 0 40px rgba(56, 189, 248, 0.4),
+    inset 0 0 60px rgba(56, 189, 248, 0.1);
+  overflow: hidden;
+}
+
+.neonGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(56, 189, 248, 0.3) 0%,
+    transparent 70%
+  );
+  transform: translate(-50%, -50%);
+  animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+.neonLines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 2rem;
+}
+
+.neonLine {
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #38bdf8 50%,
+    transparent 100%
+  );
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.8);
+  animation: scanline 3s linear infinite;
+  opacity: 0.6;
+}
+
+.neonLine:nth-child(2) {
+  animation-delay: 0.75s;
+}
+
+.neonLine:nth-child(3) {
+  animation-delay: 1.5s;
+}
+
+.neonLine:nth-child(4) {
+  animation-delay: 2.25s;
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.neonCircle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 180px;
+  height: 180px;
+  transform: translate(-50%, -50%);
+  border: 3px solid #38bdf8;
+  border-radius: 50%;
+  box-shadow: 0 0 30px rgba(56, 189, 248, 0.6),
+    inset 0 0 30px rgba(56, 189, 248, 0.3);
+  animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.neonCircleInner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 140px;
+  height: 140px;
+  transform: translate(-50%, -50%);
+  border: 2px solid rgba(56, 189, 248, 0.5);
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.4),
+    inset 0 0 20px rgba(56, 189, 248, 0.2);
+  animation: rotateReverse 15s linear infinite;
+}
+
+@keyframes rotateReverse {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(-360deg);
+  }
+}
+
+.neonText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Teko", sans-serif;
+  font-size: 4rem;
+  font-weight: 700;
+  color: #38bdf8;
+  text-shadow: 0 0 20px rgba(56, 189, 248, 0.8),
+    0 0 40px rgba(56, 189, 248, 0.6), 0 0 60px rgba(56, 189, 248, 0.4);
+  letter-spacing: 0.2em;
+  animation: textGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes textGlow {
+  0% {
+    text-shadow: 0 0 20px rgba(56, 189, 248, 0.8),
+      0 0 40px rgba(56, 189, 248, 0.6), 0 0 60px rgba(56, 189, 248, 0.4);
+  }
+  100% {
+    text-shadow: 0 0 30px rgba(56, 189, 248, 1),
+      0 0 60px rgba(56, 189, 248, 0.8), 0 0 90px rgba(56, 189, 248, 0.6);
+  }
+}
+
+/* Sections */
+.section {
+  padding: 4rem 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.sectionTitle {
+  font-family: "Teko", sans-serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 2rem 0;
+  color: #fff;
+  position: relative;
+  display: inline-block;
+}
+
+.sectionTitle::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60%;
+  height: 4px;
+  background: linear-gradient(90deg, #06b6d4 0%, transparent 100%);
+}
+
+/* Scroll Controls */
+.scrollControls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.scrollBtn {
+  width: 48px;
+  height: 48px;
+  background: rgba(6, 182, 212, 0.1);
+  border: 2px solid rgba(6, 182, 212, 0.3);
+  color: #38bdf8;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "Teko", sans-serif;
+  font-weight: 700;
+}
+
+.scrollBtn:hover {
+  background: rgba(6, 182, 212, 0.2);
+  border-color: #06b6d4;
+  transform: scale(1.1);
+}
+
+/* Cards Wrapper */
+.cardsWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.cardsScroll {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  overflow-y: visible;
+  scroll-behavior: smooth;
+  padding: 2rem 0.5rem;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.cardsScroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* 3D Flip Card Container */
+.cardContainer {
+  flex: 0 0 300px;
+  height: auto;
+  min-height: 420px;
+  perspective: 1000px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.cardContainer:hover {
+  transform: translateY(-8px);
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+  border-radius: 12px;
+}
+
+.flipped .card {
+  transform: rotateY(180deg);
+}
+
+.cardFront,
+.cardBack {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.cardFront {
+  background: linear-gradient(180deg, #1a1a2e 0%, #0f0f1e 100%);
+  border: 3px solid;
+  border-color: var(--team-color, #38bdf8);
+}
+
+.cardBack {
+  transform: rotateY(180deg);
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border: 3px solid var(--team-color, #38bdf8);
+}
+
+.cardRarity {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  padding: 4px 12px;
+  background: rgba(56, 189, 248, 0.2);
+  border: 1px solid rgba(56, 189, 248, 0.5);
+  color: #38bdf8;
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 4px;
+  z-index: 10;
+}
+
+.cardImageWrapper {
+  width: 100%;
+  height: 240px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+  background: radial-gradient(
+    ellipse at center bottom,
+    rgba(56, 189, 248, 0.15) 0%,
+    transparent 70%
+  );
+  padding-bottom: 0.75rem;
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.5));
+  transition: transform 0.3s ease;
+}
+
+.cardContainer:hover .cardImage {
+  transform: translateY(-8px) scale(1.05);
+}
+
+.cardName {
+  font-family: "Teko", sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 0.08em;
+  padding: 0.5rem 0.75rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-top: 2px solid var(--team-color, #38bdf8);
+}
+
+.cardDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0.75rem 1rem;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.detailRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Rajdhani", sans-serif;
+}
+
+.detailLabel {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.detailValue {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #38bdf8;
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+}
+
+.cardActions {
+  display: flex;
+  gap: 0.5rem;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 0.5rem 0.75rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.statusBadge {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 0.5rem 1rem;
+  background: rgba(34, 197, 94, 0.25);
+  border: 2px solid rgba(34, 197, 94, 0.6);
+  color: #22c55e;
+  text-transform: uppercase;
+  border-radius: 4px;
+  text-shadow: 0 0 10px rgba(34, 197, 94, 0.6);
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.3);
+}
+
+.statusBadgeRented {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 0.5rem 1rem;
+  background: rgba(234, 179, 8, 0.25);
+  border: 2px solid rgba(234, 179, 8, 0.6);
+  color: #eab308;
+  text-transform: uppercase;
+  border-radius: 4px;
+  text-shadow: 0 0 10px rgba(234, 179, 8, 0.6);
+  box-shadow: 0 0 15px rgba(234, 179, 8, 0.3);
+}
+
+.actionBtn {
+  flex: 1;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 0.6rem 1rem;
+  background: linear-gradient(
+    135deg,
+    rgba(6, 182, 212, 0.15) 0%,
+    rgba(14, 165, 233, 0.15) 100%
+  );
+  border: 2px solid rgba(56, 189, 248, 0.5);
+  color: #fff;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+  position: relative;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(6, 182, 212, 0.2);
+}
+
+.actionBtn:hover {
+  background: linear-gradient(135deg, #06b6d4 0%, #0ea5e9 100%);
+  border-color: #38bdf8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(6, 182, 212, 0.4);
+}
+
+.actionBtn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--team-color, #38bdf8),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.actionBtn:hover::before {
+  opacity: 1;
+}
+
+.actionBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: rgba(100, 116, 139, 0.2);
+}
+
+/* Loading Skeleton */
+.loadingSkeleton {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.skeletonImage {
+  width: 100%;
+  height: 260px;
+  background: linear-gradient(
+    90deg,
+    rgba(56, 189, 248, 0.05) 0%,
+    rgba(56, 189, 248, 0.15) 50%,
+    rgba(56, 189, 248, 0.05) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.skeletonText {
+  height: 48px;
+  background: linear-gradient(
+    90deg,
+    rgba(56, 189, 248, 0.05) 0%,
+    rgba(56, 189, 248, 0.15) 50%,
+    rgba(56, 189, 248, 0.05) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-top: 2px solid rgba(56, 189, 248, 0.2);
+}
+
+.skeletonDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.4);
+  flex: 1;
+}
+
+.skeletonLine {
+  height: 20px;
+  background: linear-gradient(
+    90deg,
+    rgba(56, 189, 248, 0.05) 0%,
+    rgba(56, 189, 248, 0.15) 50%,
+    rgba(56, 189, 248, 0.05) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+}
+
+.skeletonLine:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.skeletonLine:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Card Back */
+.cardBackHeader {
+  font-family: "Teko", sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  text-align: center;
+  color: #fff;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 1rem 0.75rem;
+  background: linear-gradient(
+    135deg,
+    var(--team-color, #38bdf8) 0%,
+    rgba(56, 189, 248, 0.5) 100%
+  );
+  border-bottom: 3px solid rgba(0, 0, 0, 0.3);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.playersList {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 1rem;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(56, 189, 248, 0.05) 0%,
+    transparent 70%
+  );
+}
+
+.playerName {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff;
+  padding: 0.65rem 0.85rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  letter-spacing: 0.03em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.playerName::before {
+  content: "⚽";
+  margin-right: 0.5rem;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.playerName:last-child {
+  border-bottom: none;
+}
+
+.multiplier {
+  font-family: "Teko", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.15);
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+}
+
+.addSquadBtn {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 1.25rem;
+  background: var(--team-color, #38bdf8);
+  border: none;
+  color: #000;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.addSquadBtn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.addSquadBtn:hover::before {
+  left: 100%;
+}
+
+.addSquadBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Dual Panel Layout */
+.dualPanel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.panelLeft,
+.panelRight {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Squad Builder */
+.squadBuilderHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.selectionCounter {
+  font-family: "Teko", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #38bdf8;
+  text-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+  letter-spacing: 0.05em;
+}
+
+.playersList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 600px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.playersList::-webkit-scrollbar {
+  width: 8px;
+}
+
+.playersList::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+}
+
+.playersList::-webkit-scrollbar-thumb {
+  background: rgba(56, 189, 248, 0.3);
+  border-radius: 4px;
+}
+
+.playersList::-webkit-scrollbar-thumb:hover {
+  background: rgba(56, 189, 248, 0.5);
+}
+
+.playerItem {
+  background: rgba(6, 182, 212, 0.05);
+  border: 2px solid rgba(6, 182, 212, 0.2);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.playerItem:hover {
+  background: rgba(6, 182, 212, 0.1);
+  border-color: rgba(6, 182, 212, 0.4);
+}
+
+.playerLabel {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  cursor: pointer;
+  width: 100%;
+}
+
+.playerCheckbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #06b6d4;
+  flex-shrink: 0;
+}
+
+.playerCheckbox:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.playerDetails {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.playerName {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.03em;
+}
+
+.playerCardRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.playerCard {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.playerStatusBought {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 0.125rem 0.5rem;
+  background: rgba(34, 197, 94, 0.15);
+  border: 1px solid rgba(34, 197, 94, 0.4);
+  color: #22c55e;
+  text-transform: uppercase;
+  border-radius: 3px;
+}
+
+.playerStatusRented {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 0.125rem 0.5rem;
+  background: rgba(234, 179, 8, 0.15);
+  border: 1px solid rgba(234, 179, 8, 0.4);
+  color: #eab308;
+  text-transform: uppercase;
+  border-radius: 3px;
+}
+
+.playerMultiplier {
+  font-family: "Teko", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.15);
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+  flex-shrink: 0;
+}
+
+/* Leaderboard */
+.leaderboard {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.leaderboardRow {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: linear-gradient(
+    135deg,
+    rgba(6, 182, 212, 0.1) 0%,
+    rgba(8, 145, 178, 0.05) 100%
+  );
+  border: 2px solid rgba(6, 182, 212, 0.3);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.leaderboardRow::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  background: linear-gradient(180deg, #38bdf8 0%, #06b6d4 100%);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
+}
+
+.leaderboardRow:hover {
+  border-color: #06b6d4;
+  box-shadow: 0 8px 32px rgba(6, 182, 212, 0.2);
+  transform: translateY(-4px);
+}
+
+.rank {
+  font-family: "Teko", sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #38bdf8;
+  min-width: 60px;
+  text-align: center;
+  text-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
+  line-height: 1;
+}
+
+.leaderInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.leaderAddress {
+  font-family: "Courier New", monospace;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #cbd5e1;
+  letter-spacing: 0.05em;
+}
+
+.leaderStats {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.cardsOwned {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: rgba(100, 116, 139, 0.2);
+  padding: 0.5rem 0.875rem;
+  border-radius: 4px;
+}
+
+.leaderPoints {
+  font-family: "Teko", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #06b6d4;
+  text-shadow: 0 0 15px rgba(6, 182, 212, 0.5);
+  line-height: 1;
+}
+
+/* Empty States */
+.emptyState,
+.emptySquad {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #64748b;
+  grid-column: 1 / -1;
+}
+
+.emptyState p:first-child,
+.emptySquad p:first-child {
+  font-family: "Teko", sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.emptyHint {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #475569;
+  margin: 0.5rem 0 0 0;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .heroSection {
+    min-height: auto;
+    padding: 2rem 1rem;
+  }
+
+  .heroContent {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .heroLeft {
+    gap: 1.5rem;
+  }
+
+  .title {
+    font-size: clamp(2.5rem, 12vw, 5rem);
+    text-align: center;
+  }
+
+  .titleLine1,
+  .titleLine2 {
+    display: inline;
+    margin: 0;
+  }
+
+  .heroDescription {
+    text-align: center;
+  }
+
+  .heroFeatures {
+    gap: 0.75rem;
+  }
+
+  .feature {
+    padding: 0.75rem;
+  }
+
+  .featureIcon {
+    font-size: 1.5rem;
+  }
+
+  .heroActions {
+    align-items: center;
+    width: 100%;
+  }
+
+  .neonGraphic {
+    max-width: 300px;
+  }
+
+  .neonText {
+    font-size: 3rem;
+  }
+
+  .section {
+    padding: 2rem 1rem;
+  }
+
+  .sectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .cardContainer {
+    flex: 0 0 260px;
+    height: 380px;
+  }
+
+  .dualPanel {
+    grid-template-columns: 1fr;
+  }
+
+  .scrollControls {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 480px) {
+  .mintBtn {
+    padding: 0.875rem 2rem;
+    font-size: 1.25rem;
+  }
+
+  .cardContainer {
+    flex: 0 0 240px;
+    height: 360px;
+  }
+
+  .leaderboardRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .rank {
+    min-width: auto;
+  }
+}

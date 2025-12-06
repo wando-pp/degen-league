@@ -1,0 +1,113 @@
+/* Container - Fixed positioning bottom-right */
+.bannerContainer {
+  position: fixed;
+  bottom: 80px; /* 20rem = 80px for mobile (to avoid nav bars) */
+  right: 16px; /* 4rem = 16px */
+  z-index: 50;
+  animation: fadeInSlideUp 500ms ease-out forwards;
+}
+
+/* Animation - Fade in and slide up from bottom */
+@keyframes fadeInSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive - Desktop positioning */
+@media (min-width: 768px) {
+  .bannerContainer {
+    bottom: 16px; /* md:bottom-4 = 16px */
+  }
+}
+
+/* Banner content wrapper */
+.bannerContent {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* gap-2 = 8px */
+  border-radius: 8px; /* rounded-lg */
+  background-color: rgba(0, 0, 0, 0.9); /* bg-black/90 */
+  padding: 4px 6px; /* py-1 px-1.5 = 4px 6px */
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04); /* shadow-xl */
+  backdrop-filter: blur(8px); /* backdrop-blur-sm */
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1); /* border-white/10 */
+}
+
+/* Responsive padding for desktop */
+@media (min-width: 768px) {
+  .bannerContent {
+    padding: 4px 8px; /* md:px-2 md:py-1 = 4px 8px */
+  }
+}
+
+/* Link styling */
+.bannerLink {
+  display: flex;
+  align-items: center;
+  gap: 6px; /* gap-1.5 = 6px */
+  font-size: 0.75rem; /* text-xs */
+  font-weight: 500; /* font-medium */
+  color: white;
+  text-decoration: none;
+  transition: color 150ms ease-in-out;
+}
+
+.bannerLink:hover {
+  color: rgba(255, 255, 255, 0.8); /* hover:text-white/80 */
+}
+
+/* Logo styling */
+.logo {
+  object-fit: contain;
+  margin-left: -6px;
+  margin-right: -6px; /* -mx-1.5 = -6px */
+}
+
+/* Responsive logo size for desktop */
+@media (min-width: 768px) {
+  .logo {
+    width: 20px !important;
+    height: 20px !important; /* md:w-5 md:h-5 = 20px */
+  }
+}
+
+/* Brand name styling */
+.brandName {
+  font-weight: 600; /* font-semibold */
+  color: white;
+}
+
+/* Dismiss button */
+.dismissButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px; /* h-6 = 24px */
+  width: 24px; /* w-6 = 24px */
+  border-radius: 6px; /* rounded-md */
+  background-color: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.7); /* text-white/70 */
+  cursor: pointer;
+  transition: all 150ms ease-in-out;
+  padding: 0;
+}
+
+.dismissButton:hover {
+  color: white; /* hover:text-white */
+  background-color: rgba(255, 255, 255, 0.1); /* hover:bg-white/10 */
+}
+
+/* Dismiss icon */
+.dismissIcon {
+  width: 16px; /* h-4 = 16px */
+  height: 16px; /* w-4 = 16px */
+}
