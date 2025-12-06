@@ -91,123 +91,123 @@ const CONTRACT_ABI = [
 const SHOWCASE_CARDS = [
   {
     id: 0,
-    cardName: "Red Devils Elite",
-    team: "Manchester United",
-    color: "#38bdf8",
-    rentPrice: "0.000007",
+    cardName: "Asian Aces",
+    team: "Global Squad",
+    color: "#ffc107", // Updated color to yellow/gold for uniqueness
+    rentPrice: "0.000008",
     duration: "7 days",
-    type: "LEGENDARY",
+    type: "EPIC", // Changed type
     players: [
-      { name: "Rashford", multiplier: 2.5 },
-      { name: "Fernandes", multiplier: 2.2 },
-      { name: "Casemiro", multiplier: 1.8 },
-      { name: "Shaw", multiplier: 1.5 },
-      { name: "Onana", multiplier: 1.3 },
-      { name: "Hojlund", multiplier: 1.7 },
+      { name: "Son Heung-min", multiplier: 2.8 },
+      { name: "Mitoma", multiplier: 2.3 },
+      { name: "Kim Min-jae", multiplier: 2.1 },
+      { name: "Doan", multiplier: 1.8 },
+      { name: "Takefusa Kubo", multiplier: 1.7 },
+      { name: "Hwang Hee-chan", multiplier: 1.6 },
     ],
     rarity: 3,
     image:
-      "https://res.cloudinary.com/dwf6iuvbh/image/upload/v1764081919/Gemini_Generated_Image_92m6ob92m6ob92m6-removebg-preview_ffjqee.png",
+      "https://res.cloudinary.com/dwf6iuvbh/image/upload/v1765000000/Asian_Aces_Card.png", // Placeholder
   },
   {
     id: 1,
-    cardName: "Anfield Legends",
-    team: "Liverpool",
-    color: "#38bdf8",
+    cardName: "Galacticos Legends",
+    team: "Superstars XI",
+    color: "#673ab7", // Updated color to purple
+    rentPrice: "0.000010",
+    duration: "7 days",
+    type: "MYTHIC", // Highest tier
+    players: [
+      { name: "Messi", multiplier: 3.5 },
+      { name: "Ronaldo", multiplier: 3.4 },
+      { name: "De Bruyne", multiplier: 3.1 },
+      { name: "Neymar", multiplier: 2.6 },
+      { name: "Modric", multiplier: 2.2 },
+      { name: "Benzema", multiplier: 2.0 },
+    ],
+    rarity: 4, // New rarity level
+    image:
+      "https://res.cloudinary.com/dwf6iuvbh/image/upload/v1765000001/Galacticos_Card.png", // Placeholder
+  },
+  {
+    id: 2,
+    cardName: "African Giants",
+    team: "Continental XI",
+    color: "#4caf50", // Updated color to green
     rentPrice: "0.000007",
     duration: "7 days",
     type: "LEGENDARY",
     players: [
       { name: "Salah", multiplier: 3.0 },
-      { name: "Van Dijk", multiplier: 2.4 },
-      { name: "Alisson", multiplier: 2.0 },
-      { name: "Alexander-Arnold", multiplier: 2.1 },
-      { name: "Diaz", multiplier: 1.9 },
-      { name: "Mac Allister", multiplier: 1.6 },
+      { name: "Osimhen", multiplier: 2.7 },
+      { name: "Iwobi", multiplier: 2.0 },
+      { name: "Bounou", multiplier: 1.8 },
+      { name: "Hakimi", multiplier: 2.1 },
+      { name: "Kudus", multiplier: 1.9 },
     ],
     rarity: 3,
     image:
-      "https://res.cloudinary.com/dwf6iuvbh/image/upload/v1764081105/Gemini_Generated_Image_eyyd8qeyyd8qeyyd-removebg-preview_gyriij.png",
-  },
-  {
-    id: 2,
-    cardName: "Gunners Squad",
-    team: "Arsenal",
-    color: "#38bdf8",
-    rentPrice: "0.000007",
-    duration: "7 days",
-    type: "RARE",
-    players: [
-      { name: "Saka", multiplier: 2.8 },
-      { name: "Odegaard", multiplier: 2.6 },
-      { name: "Rice", multiplier: 2.3 },
-      { name: "Saliba", multiplier: 2.0 },
-      { name: "Martinelli", multiplier: 1.8 },
-      { name: "Raya", multiplier: 1.4 },
-    ],
-    rarity: 2,
-    image:
-      "https://res.cloudinary.com/dwf6iuvbh/image/upload/v1764024510/Gemini_Generated_Image_v7yivfv7yivfv7yi-removebg-preview_qunn2t.png",
+      "https://res.cloudinary.com/dwf6iuvbh/image/upload/v1765000002/African_Giants_Card.png", // Placeholder
   },
   {
     id: 3,
-    cardName: "Blues Battalion",
-    team: "Chelsea",
-    color: "#38bdf8",
+    cardName: "Elite Red Devils",
+    team: "Manchester United",
+    color: "#f44336", // Updated color to red
     rentPrice: "0.000007",
     duration: "7 days",
-    type: "RARE",
+    type: "EPIC",
     players: [
-      { name: "Palmer", multiplier: 2.7 },
-      { name: "Jackson", multiplier: 2.1 },
-      { name: "Caicedo", multiplier: 1.9 },
-      { name: "James", multiplier: 2.0 },
-      { name: "Enzo", multiplier: 1.7 },
-      { name: "Sanchez", multiplier: 1.3 },
+      { name: "Fernandes", multiplier: 2.5 },
+      { name: "Mbuemo", multiplier: 2.3 },
+      { name: "Sesko", multiplier: 2.1 },
+      { name: "Dalot", multiplier: 1.8 },
+      { name: "Martinez", multiplier: 1.7 },
+      { name: "Mainoo", multiplier: 1.6 },
     ],
-    rarity: 2,
+    rarity: 3,
     image:
-      "https://res.cloudinary.com/dwf6iuvbh/image/upload/v1764024510/Gemini_Generated_Image_7u0i8x7u0i8x7u0i-removebg-preview_fbwtds.png",
+      "https://res.cloudinary.com/dwf6iuvbh/image/upload/v1765000003/Elite_Red_Devils_Card.png", // Placeholder
   },
   {
     id: 4,
-    cardName: "Sky Blues Dynasty",
-    team: "Manchester City",
-    color: "#38bdf8",
-    rentPrice: "0.000007",
+    cardName: "Wonderkid World",
+    team: "Future Stars",
+    color: "#2196f3", // Updated color to blue
+    rentPrice: "0.000006",
+    duration: "7 days",
+    type: "RARE",
+    players: [
+      { name: "Yamal", multiplier: 2.8 },
+      { name: "Endrick", multiplier: 2.5 },
+      { name: "Zaire-Emery", multiplier: 2.2 },
+      { name: "Garnacho", multiplier: 2.1 },
+      { name: "Bellingham", multiplier: 3.0 },
+      { name: "Gavi", multiplier: 2.0 },
+    ],
+    rarity: 2,
+    image:
+      "https://res.cloudinary.com/dwf6iuvbh/image/upload/v1765000004/Wonderkid_World_Card.png", // Placeholder
+  },
+  {
+    id: 5,
+    cardName: "UCL Elite Forces",
+    team: "Champions XI",
+    color: "#ff9800", // Updated color to orange
+    rentPrice: "0.000009",
     duration: "7 days",
     type: "LEGENDARY",
     players: [
       { name: "Haaland", multiplier: 3.2 },
-      { name: "De Bruyne", multiplier: 2.9 },
-      { name: "Foden", multiplier: 2.5 },
-      { name: "Rodri", multiplier: 2.3 },
-      { name: "Dias", multiplier: 2.0 },
-      { name: "Ederson", multiplier: 1.8 },
+      { name: "Mbappe", multiplier: 3.1 },
+      { name: "Rice", multiplier: 2.7 },
+      { name: "Vinicius Jr", multiplier: 2.5 },
+      { name: "Bellingham", multiplier: 3.0 },
+      { name: "Sane", multiplier: 2.3 },
     ],
     rarity: 3,
     image:
-      "https://res.cloudinary.com/dwf6iuvbh/image/upload/v1764024510/Gemini_Generated_Image_xgjb1xgjb1xgjb1x-removebg-preview_thuwwd.png",
-  },
-  {
-    id: 5,
-    cardName: "Spurs Warriors",
-    team: "Tottenham",
-    color: "#38bdf8",
-    rentPrice: "0.000007",
-    duration: "7 days",
-    type: "RARE",
-    players: [
-      { name: "Son", multiplier: 2.6 },
-      { name: "Maddison", multiplier: 2.2 },
-      { name: "Romero", multiplier: 1.9 },
-      { name: "Kulusevski", multiplier: 1.8 },
-      { name: "Bissouma", multiplier: 1.5 },
-      { name: "Vicario", multiplier: 1.4 },
-    ],
-    rarity: 2,
-    image:
-      "https://res.cloudinary.com/dwf6iuvbh/image/upload/v1764024510/Gemini_Generated_Image_h4lv71h4lv71h4lv-removebg-preview_titbje.png",
+      "https://res.cloudinary.com/dwf6iuvbh/image/upload/v1765000005/UCL_Elite_Forces_Card.png", // Placeholder
   },
 ];
 
