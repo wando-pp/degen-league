@@ -94,7 +94,7 @@ const SHOWCASE_CARDS = [
     cardName: "Asian Aces",
     team: "Global Squad",
     color: "#ffc107", // Updated color to yellow/gold for uniqueness
-    rentPrice: "0.000008",
+    rentPrice: "0.000007",
     duration: "7 days",
     type: "EPIC", // Changed type
     players: [
@@ -114,7 +114,7 @@ const SHOWCASE_CARDS = [
     cardName: "Galacticos Legends",
     team: "Superstars XI",
     color: "#673ab7", // Updated color to purple
-    rentPrice: "0.000010",
+    rentPrice: "0.000007",
     duration: "7 days",
     type: "MYTHIC", // Highest tier
     players: [
@@ -174,7 +174,7 @@ const SHOWCASE_CARDS = [
     cardName: "Wonderkid World",
     team: "Future Stars",
     color: "#2196f3", // Updated color to blue
-    rentPrice: "0.000006",
+    rentPrice: "0.000007",
     duration: "7 days",
     type: "RARE",
     players: [
@@ -194,7 +194,7 @@ const SHOWCASE_CARDS = [
     cardName: "UCL Elite Forces",
     team: "Champions XI",
     color: "#ff9800", // Updated color to orange
-    rentPrice: "0.000009",
+    rentPrice: "0.000007",
     duration: "7 days",
     type: "LEGENDARY",
     players: [
