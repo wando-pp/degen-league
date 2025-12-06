@@ -32,8 +32,8 @@ const CONTRACT_ABI = [
   },
   {
     inputs: [{ internalType: "uint256", name: "itemId", type: "uint256" }],
-    name: "isItemOwned",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    name: "itemOwner",
+    outputs: [{ internalType: "address", name: "", type: "address" }],
     stateMutability: "view",
     type: "function",
   },
@@ -338,41 +338,41 @@ export default function Home() {
     args: [BigInt(5)],
   });
 
-  // Read owned status for each card
-  const card0Owned = useReadContract({
+  // Read owner address for each card
+  const card0Owner = useReadContract({
     address: CONTRACT_ADDRESS,
     abi: CONTRACT_ABI,
-    functionName: "isItemOwned",
+    functionName: "itemOwner",
     args: [BigInt(0)],
   });
-  const card1Owned = useReadContract({
+  const card1Owner = useReadContract({
     address: CONTRACT_ADDRESS,
     abi: CONTRACT_ABI,
-    functionName: "isItemOwned",
+    functionName: "itemOwner",
     args: [BigInt(1)],
   });
-  const card2Owned = useReadContract({
+  const card2Owner = useReadContract({
     address: CONTRACT_ADDRESS,
     abi: CONTRACT_ABI,
-    functionName: "isItemOwned",
+    functionName: "itemOwner",
     args: [BigInt(2)],
   });
-  const card3Owned = useReadContract({
+  const card3Owner = useReadContract({
     address: CONTRACT_ADDRESS,
     abi: CONTRACT_ABI,
-    functionName: "isItemOwned",
+    functionName: "itemOwner",
     args: [BigInt(3)],
   });
-  const card4Owned = useReadContract({
+  const card4Owner = useReadContract({
     address: CONTRACT_ADDRESS,
     abi: CONTRACT_ABI,
-    functionName: "isItemOwned",
+    functionName: "itemOwner",
     args: [BigInt(4)],
   });
-  const card5Owned = useReadContract({
+  const card5Owner = useReadContract({
     address: CONTRACT_ADDRESS,
     abi: CONTRACT_ABI,
-    functionName: "isItemOwned",
+    functionName: "itemOwner",
     args: [BigInt(5)],
   });
 
@@ -435,13 +435,13 @@ export default function Home() {
       card4Minted.data,
       card5Minted.data,
     ];
-    const ownedData = [
-      card0Owned.data,
-      card1Owned.data,
-      card2Owned.data,
-      card3Owned.data,
-      card4Owned.data,
-      card5Owned.data,
+    const ownerData = [
+      card0Owner.data,
+      card1Owner.data,
+      card2Owner.data,
+      card3Owner.data,
+      card4Owner.data,
+      card5Owner.data,
     ];
     const rentersData = [
       card0Renters.data,
@@ -454,6 +454,12 @@ export default function Home() {
 
     const statuses: Record<number, CardStatus> = {};
     SHOWCASE_CARDS.forEach((card, index) => {
+      const cardOwner = ownerData[index] as `0x${string}` | undefined;
+      const isCurrentUserOwner =
+        address &&
+        cardOwner &&
+        cardOwner.toLowerCase() === address.toLowerCase();
+
       const rentersArray = rentersData[index] as
         | readonly `0x${string}`[]
         | undefined;
@@ -467,7 +473,7 @@ export default function Home() {
 
       statuses[card.id] = {
         isMinted: mintedData[index] === true,
-        isOwned: ownedData[index] === true,
+        isOwned: isCurrentUserOwner || false,
         isRented: hasRented,
         loading: false,
       };
@@ -481,12 +487,12 @@ export default function Home() {
     card3Minted.data,
     card4Minted.data,
     card5Minted.data,
-    card0Owned.data,
-    card1Owned.data,
-    card2Owned.data,
-    card3Owned.data,
-    card4Owned.data,
-    card5Owned.data,
+    card0Owner.data,
+    card1Owner.data,
+    card2Owner.data,
+    card3Owner.data,
+    card4Owner.data,
+    card5Owner.data,
     card0Renters.data,
     card1Renters.data,
     card2Renters.data,
@@ -560,8 +566,14 @@ export default function Home() {
 
     if (secondsLeft <= 0) return "EXPIRED";
 
-    const daysLeft = Math.ceil(secondsLeft / (24 * 60 * 60));
-    return `${daysLeft} day${daysLeft !== 1 ? "s" : ""} left`;
+    const days = Math.floor(secondsLeft / (24 * 60 * 60));
+    const hours = Math.floor((secondsLeft % (24 * 60 * 60)) / (60 * 60));
+
+    if (days > 0) {
+      return `${days}d ${hours}h left`;
+    } else {
+      return `${hours}h left`;
+    }
   };
 
   // Get all players from owned AND rented cards
@@ -616,6 +628,111 @@ export default function Home() {
     return allPlayers;
   };
 
+  // Get all participants for the leaderboard (owners + renters)
+  const getAllParticipants = () => {
+    const participantsMap = new Map<
+      string,
+      {
+        address: string;
+        cardsOwned: number;
+        cardsRented: number;
+        totalPower: number;
+      }
+    >();
+
+    const ownerData = [
+      card0Owner.data,
+      card1Owner.data,
+      card2Owner.data,
+      card3Owner.data,
+      card4Owner.data,
+      card5Owner.data,
+    ];
+    const rentersData = [
+      card0Renters.data,
+      card1Renters.data,
+      card2Renters.data,
+      card3Renters.data,
+      card4Renters.data,
+      card5Renters.data,
+    ];
+
+    // Collect all owners
+    ownerData.forEach((owner, cardIndex) => {
+      const ownerAddress = owner as `0x${string}` | undefined;
+      if (
+        ownerAddress &&
+        ownerAddress !== "0x0000000000000000000000000000000000000000"
+      ) {
+        const card = SHOWCASE_CARDS[cardIndex];
+        const cardPower = card.players.reduce(
+          (sum, p) => sum + p.multiplier,
+          0
+        );
+        const lowerAddress = ownerAddress.toLowerCase();
+
+        if (participantsMap.has(lowerAddress)) {
+          const existing = participantsMap.get(lowerAddress)!;
+          existing.cardsOwned += 1;
+          existing.totalPower += cardPower;
+        } else {
+          participantsMap.set(lowerAddress, {
+            address: ownerAddress,
+            cardsOwned: 1,
+            cardsRented: 0,
+            totalPower: cardPower,
+          });
+        }
+      }
+    });
+
+    // Collect all renters
+    rentersData.forEach((renters, cardIndex) => {
+      const rentersArray = renters as readonly `0x${string}`[] | undefined;
+      if (rentersArray && rentersArray.length > 0) {
+        const card = SHOWCASE_CARDS[cardIndex];
+        const cardPower = card.players.reduce(
+          (sum, p) => sum + p.multiplier,
+          0
+        );
+
+        // Get unique renters for this card
+        const uniqueRenters = Array.from(
+          new Set(rentersArray.map((r) => r.toLowerCase()))
+        );
+
+        uniqueRenters.forEach((renterAddress) => {
+          // Only count as rental if they don't own this card
+          const ownerAddress = ownerData[cardIndex] as
+            | `0x${string}`
+            | undefined;
+          const isOwner =
+            ownerAddress && ownerAddress.toLowerCase() === renterAddress;
+
+          if (!isOwner) {
+            if (participantsMap.has(renterAddress)) {
+              const existing = participantsMap.get(renterAddress)!;
+              existing.cardsRented += 1;
+              existing.totalPower += cardPower;
+            } else {
+              participantsMap.set(renterAddress, {
+                address: renterAddress as `0x${string}`,
+                cardsOwned: 0,
+                cardsRented: 1,
+                totalPower: cardPower,
+              });
+            }
+          }
+        });
+      }
+    });
+
+    // Convert to array and sort by total power descending
+    return Array.from(participantsMap.values()).sort(
+      (a, b) => b.totalPower - a.totalPower
+    );
+  };
+
   const getCardButtons = (card: (typeof SHOWCASE_CARDS)[0]) => {
     const status = cardStatuses[card.id];
 
@@ -654,7 +771,38 @@ export default function Home() {
       );
     }
 
-    // Minted but not owned - show BUY and RENT buttons
+    // Check if card has been bought by anyone (has an owner)
+    const ownerData = [
+      card0Owner.data,
+      card1Owner.data,
+      card2Owner.data,
+      card3Owner.data,
+      card4Owner.data,
+      card5Owner.data,
+    ];
+    const cardOwner = ownerData[card.id] as `0x${string}` | undefined;
+    const hasSomeOwner =
+      cardOwner && cardOwner !== "0x0000000000000000000000000000000000000000";
+
+    // If card has owner - show RENT button only
+    if (hasSomeOwner) {
+      return (
+        <div className={styles.cardActions}>
+          <button
+            className={styles.actionBtn}
+            onClick={(e) => {
+              e.stopPropagation();
+              rentCard(card.id);
+            }}
+            disabled={isConfirming}
+          >
+            {isConfirming ? "RENTING..." : "RENT"}
+          </button>
+        </div>
+      );
+    }
+
+    // Minted but not bought by anyone - show BUY button only
     return (
       <div className={styles.cardActions}>
         <button
@@ -666,16 +814,6 @@ export default function Home() {
           disabled={isConfirming}
         >
           {isConfirming ? "BUYING..." : "BUY"}
-        </button>
-        <button
-          className={styles.actionBtn}
-          onClick={(e) => {
-            e.stopPropagation();
-            rentCard(card.id);
-          }}
-          disabled={isConfirming}
-        >
-          {isConfirming ? "RENTING..." : "RENT"}
         </button>
       </div>
     );
@@ -762,20 +900,26 @@ export default function Home() {
           </div>
 
           <div className={styles.heroRight}>
-            <div className={styles.neonGraphic}>
-              <div className={styles.neonCard}>
-                <div className={styles.neonCardInner}>
-                  <div className={styles.neonGlow}></div>
-                  <div className={styles.neonLines}>
-                    <div className={styles.neonLine}></div>
-                    <div className={styles.neonLine}></div>
-                    <div className={styles.neonLine}></div>
-                    <div className={styles.neonLine}></div>
+            <div className={styles.stadiumGraphic}>
+              <div className={styles.fieldContainer}>
+                <div className={styles.field}>
+                  <div className={styles.centerCircle}></div>
+                  <div className={styles.centerLine}></div>
+                  <div className={styles.penaltyBox}></div>
+                  <div className={styles.penaltyBoxBottom}></div>
+                  <div className={styles.ball}>⚽</div>
+                </div>
+                <div className={styles.statsOverlay}>
+                  <div className={styles.statItem}>
+                    <div className={styles.statValue}>
+                      {SHOWCASE_CARDS.length}
+                    </div>
+                    <div className={styles.statLabel}>CARDS</div>
                   </div>
-                  <div className={styles.neonCircle}>
-                    <div className={styles.neonCircleInner}></div>
+                  <div className={styles.statItem}>
+                    <div className={styles.statValue}>11</div>
+                    <div className={styles.statLabel}>MAX SQUAD</div>
                   </div>
-                  <div className={styles.neonText}>NFT</div>
                 </div>
               </div>
             </div>
@@ -945,46 +1089,48 @@ export default function Home() {
             <div className={styles.panelRight}>
               <h2 className={styles.sectionTitle}>LEADERBOARD</h2>
               <div className={styles.leaderboard}>
-                {address && (
-                  <div className={styles.leaderboardRow}>
-                    <span className={styles.rank}>#1</span>
-                    <div className={styles.leaderInfo}>
-                      <span className={styles.leaderAddress}>
-                        {address.slice(0, 6)}...{address.slice(-4)}
-                      </span>
-                      <div className={styles.leaderStats}>
-                        <span className={styles.cardsOwned}>
-                          {ownedItems?.length || 0} Cards
+                {getAllParticipants().length > 0 ? (
+                  getAllParticipants().map((participant, index) => (
+                    <div
+                      key={participant.address}
+                      className={styles.leaderboardRow}
+                    >
+                      <span className={styles.rank}>#{index + 1}</span>
+                      <div className={styles.leaderInfo}>
+                        <span className={styles.leaderAddress}>
+                          {participant.address.slice(0, 6)}...
+                          {participant.address.slice(-4)}
+                          {address &&
+                            participant.address.toLowerCase() ===
+                              address.toLowerCase() &&
+                            " (You)"}
                         </span>
-                        <span className={styles.leaderPoints}>
-                          {ownedItems && ownedItems.length > 0
-                            ? ownedItems
-                                .reduce((total, itemId) => {
-                                  const card = SHOWCASE_CARDS.find(
-                                    (c) => c.id === Number(itemId)
-                                  );
-                                  if (!card) return total;
-                                  return (
-                                    total +
-                                    card.players.reduce(
-                                      (sum, p) => sum + p.multiplier,
-                                      0
-                                    )
-                                  );
-                                }, 0)
-                                .toFixed(1)
-                            : "0.0"}
-                          x POWER
-                        </span>
+                        <div className={styles.leaderStats}>
+                          {participant.cardsOwned > 0 && (
+                            <span className={styles.cardsOwned}>
+                              {participant.cardsOwned} Owned
+                            </span>
+                          )}
+                          {participant.cardsRented > 0 && (
+                            <span className={styles.cardsOwned}>
+                              {participant.cardsRented} Rented
+                            </span>
+                          )}
+                          <span className={styles.leaderPoints}>
+                            {participant.totalPower.toFixed(1)}x POWER
+                          </span>
+                        </div>
                       </div>
                     </div>
+                  ))
+                ) : (
+                  <div className={styles.emptyState}>
+                    <p>No participants yet</p>
+                    <p className={styles.emptyHint}>
+                      Be the first to own or rent a card!
+                    </p>
                   </div>
                 )}
-                <div className={styles.emptyState}>
-                  <p className={styles.emptyHint}>
-                    More players joining soon...
-                  </p>
-                </div>
               </div>
             </div>
           </div>

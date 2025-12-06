@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import { X } from "lucide-react";
-import Image from "next/image";
-import styles from "./floating-banner.module.css";
+import { useState, useEffect } from 'react';
+import { X } from 'lucide-react';
+import Image from 'next/image';
+import styles from './floating-banner.module.css';
 
 export function FloatingBanner() {
   const [mounted, setMounted] = useState(false);

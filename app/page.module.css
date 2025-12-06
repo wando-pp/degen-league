@@ -380,190 +380,173 @@
   cursor: not-allowed;
 }
 
-/* Neon Graphic */
-.neonGraphic {
+/* Stadium Graphic */
+.stadiumGraphic {
   position: relative;
   width: 100%;
-  max-width: 400px;
+  max-width: 450px;
   aspect-ratio: 1;
-}
-
-.neonCard {
-  width: 100%;
-  height: 100%;
-  position: relative;
   animation: float 6s ease-in-out infinite;
 }
 
 @keyframes float {
   0%,
   100% {
-    transform: translateY(0px) rotate(0deg);
+    transform: translateY(0px);
   }
   50% {
-    transform: translateY(-20px) rotate(2deg);
+    transform: translateY(-15px);
   }
 }
 
-.neonCardInner {
+.fieldContainer {
   width: 100%;
   height: 100%;
   position: relative;
   background: linear-gradient(
     135deg,
     rgba(6, 182, 212, 0.1) 0%,
-    rgba(14, 165, 233, 0.1) 100%
+    rgba(14, 165, 233, 0.05) 100%
   );
   border: 3px solid #38bdf8;
-  border-radius: 20px;
+  border-radius: 12px;
   box-shadow: 0 0 40px rgba(56, 189, 248, 0.4),
-    inset 0 0 60px rgba(56, 189, 248, 0.1);
+    inset 0 0 60px rgba(56, 189, 248, 0.08);
   overflow: hidden;
 }
 
-.neonGlow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(
-    circle,
-    rgba(56, 189, 248, 0.3) 0%,
-    transparent 70%
-  );
-  transform: translate(-50%, -50%);
-  animation: pulse 4s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 0.4;
-    transform: translate(-50%, -50%) scale(1);
-  }
-  50% {
-    opacity: 0.8;
-    transform: translate(-50%, -50%) scale(1.1);
-  }
-}
-
-.neonLines {
-  position: absolute;
-  top: 0;
-  left: 0;
+.field {
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  padding: 2rem;
+  position: relative;
+  background: repeating-linear-gradient(
+      0deg,
+      rgba(34, 197, 94, 0.05) 0px,
+      rgba(34, 197, 94, 0.08) 10px,
+      rgba(34, 197, 94, 0.05) 20px,
+      rgba(34, 197, 94, 0.1) 30px,
+      rgba(34, 197, 94, 0.05) 40px
+    ),
+    radial-gradient(
+      ellipse at center,
+      rgba(56, 189, 248, 0.15) 0%,
+      transparent 70%
+    );
 }
 
-.neonLine {
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    #38bdf8 50%,
-    transparent 100%
-  );
-  box-shadow: 0 0 10px rgba(56, 189, 248, 0.8);
-  animation: scanline 3s linear infinite;
-  opacity: 0.6;
-}
-
-.neonLine:nth-child(2) {
-  animation-delay: 0.75s;
-}
-
-.neonLine:nth-child(3) {
-  animation-delay: 1.5s;
-}
-
-.neonLine:nth-child(4) {
-  animation-delay: 2.25s;
-}
-
-@keyframes scanline {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-.neonCircle {
+.centerCircle {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 180px;
-  height: 180px;
+  width: 120px;
+  height: 120px;
   transform: translate(-50%, -50%);
-  border: 3px solid #38bdf8;
-  border-radius: 50%;
-  box-shadow: 0 0 30px rgba(56, 189, 248, 0.6),
-    inset 0 0 30px rgba(56, 189, 248, 0.3);
-  animation: rotate 20s linear infinite;
-}
-
-@keyframes rotate {
-  0% {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
-}
-
-.neonCircleInner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 140px;
-  height: 140px;
-  transform: translate(-50%, -50%);
-  border: 2px solid rgba(56, 189, 248, 0.5);
+  border: 3px solid rgba(255, 255, 255, 0.3);
   border-radius: 50%;
   box-shadow: 0 0 20px rgba(56, 189, 248, 0.4),
     inset 0 0 20px rgba(56, 189, 248, 0.2);
-  animation: rotateReverse 15s linear infinite;
 }
 
-@keyframes rotateReverse {
-  0% {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(-360deg);
-  }
+.centerLine {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 10%,
+    rgba(255, 255, 255, 0.3) 90%,
+    transparent 100%
+  );
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
 }
 
-.neonText {
+.penaltyBox {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 80px;
+  border: 3px solid rgba(255, 255, 255, 0.25);
+  border-top: none;
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+}
+
+.penaltyBoxBottom {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 80px;
+  border: 3px solid rgba(255, 255, 255, 0.25);
+  border-bottom: none;
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+}
+
+.ball {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-family: "Teko", sans-serif;
-  font-size: 4rem;
-  font-weight: 700;
-  color: #38bdf8;
-  text-shadow: 0 0 20px rgba(56, 189, 248, 0.8),
-    0 0 40px rgba(56, 189, 248, 0.6), 0 0 60px rgba(56, 189, 248, 0.4);
-  letter-spacing: 0.2em;
-  animation: textGlow 3s ease-in-out infinite alternate;
+  font-size: 2.5rem;
+  filter: drop-shadow(0 0 15px rgba(56, 189, 248, 0.6))
+    drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+  animation: ballBounce 2s ease-in-out infinite;
+  z-index: 10;
 }
 
-@keyframes textGlow {
-  0% {
-    text-shadow: 0 0 20px rgba(56, 189, 248, 0.8),
-      0 0 40px rgba(56, 189, 248, 0.6), 0 0 60px rgba(56, 189, 248, 0.4);
-  }
+@keyframes ballBounce {
+  0%,
   100% {
-    text-shadow: 0 0 30px rgba(56, 189, 248, 1),
-      0 0 60px rgba(56, 189, 248, 0.8), 0 0 90px rgba(56, 189, 248, 0.6);
+    transform: translate(-50%, -50%) scale(1);
   }
+  50% {
+    transform: translate(-50%, -60%) scale(1.1);
+  }
+}
+
+.statsOverlay {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 2rem;
+  padding: 1rem 2rem;
+  background: rgba(10, 14, 26, 0.85);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(56, 189, 248, 0.4);
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.statValue {
+  font-family: "Teko", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #38bdf8;
+  text-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
+  line-height: 1;
+}
+
+.statLabel {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 /* Sections */
@@ -1401,12 +1384,12 @@
     width: 100%;
   }
 
-  .neonGraphic {
+  .stadiumGraphic {
     max-width: 300px;
   }
 
-  .neonText {
-    font-size: 3rem;
+  .statValue {
+    font-size: 2rem;
   }
 
   .section {
