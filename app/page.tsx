@@ -107,7 +107,7 @@ const SHOWCASE_CARDS = [
     ],
     rarity: 3,
     image:
-      "https://res.cloudinary.com/dwf6iuvbh/image/upload/v1765000000/Asian_Aces_Card.png", // Placeholder
+      "https://res.cloudinary.com/dwf6iuvbh/image/upload/v1764081919/Gemini_Generated_Image_92m6ob92m6ob92m6-removebg-preview_ffjqee.png",
   },
   {
     id: 1,
@@ -127,7 +127,7 @@ const SHOWCASE_CARDS = [
     ],
     rarity: 4, // New rarity level
     image:
-      "https://res.cloudinary.com/dwf6iuvbh/image/upload/v1765000001/Galacticos_Card.png", // Placeholder
+      "https://res.cloudinary.com/dwf6iuvbh/image/upload/v1764081105/Gemini_Generated_Image_eyyd8qeyyd8qeyyd-removebg-preview_gyriij.png",
   },
   {
     id: 2,
@@ -147,7 +147,7 @@ const SHOWCASE_CARDS = [
     ],
     rarity: 3,
     image:
-      "https://res.cloudinary.com/dwf6iuvbh/image/upload/v1765000002/African_Giants_Card.png", // Placeholder
+      "https://res.cloudinary.com/dwf6iuvbh/image/upload/v1764024510/Gemini_Generated_Image_v7yivfv7yivfv7yi-removebg-preview_qunn2t.png",
   },
   {
     id: 3,
@@ -167,7 +167,7 @@ const SHOWCASE_CARDS = [
     ],
     rarity: 3,
     image:
-      "https://res.cloudinary.com/dwf6iuvbh/image/upload/v1765000003/Elite_Red_Devils_Card.png", // Placeholder
+      "https://res.cloudinary.com/dwf6iuvbh/image/upload/v1764024510/Gemini_Generated_Image_7u0i8x7u0i8x7u0i-removebg-preview_fbwtds.png",
   },
   {
     id: 4,
@@ -187,7 +187,7 @@ const SHOWCASE_CARDS = [
     ],
     rarity: 2,
     image:
-      "https://res.cloudinary.com/dwf6iuvbh/image/upload/v1765000004/Wonderkid_World_Card.png", // Placeholder
+      "https://res.cloudinary.com/dwf6iuvbh/image/upload/v1764024510/Gemini_Generated_Image_xgjb1xgjb1xgjb1x-removebg-preview_thuwwd.png",
   },
   {
     id: 5,
@@ -207,7 +207,7 @@ const SHOWCASE_CARDS = [
     ],
     rarity: 3,
     image:
-      "https://res.cloudinary.com/dwf6iuvbh/image/upload/v1765000005/UCL_Elite_Forces_Card.png", // Placeholder
+      "https://res.cloudinary.com/dwf6iuvbh/image/upload/v1764024510/Gemini_Generated_Image_h4lv71h4lv71h4lv-removebg-preview_titbje.png",
   },
 ];
 
