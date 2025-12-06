@@ -14,7 +14,7 @@
     "@react-native-async-storage/async-storage": "^2.2.0",
     "@tanstack/react-query": "^5.81.5",
     "lucide-react": "^0.555.0",
-    "next": "16.0.1",
+    "next": "^16.0.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "viem": "^2.31.6",
